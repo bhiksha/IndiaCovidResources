@@ -1,0 +1,24 @@
+<html>
+<h3>Starting 1st May 2021 several Indian state will provide free vaccinations.
+Below is a partial list of states that will do so. We will update it as we
+obtain more information.
+
+<ul>
+<li> Andhra Pradesh
+<li> Assam
+<li> Bihar
+<li> Chhattisgarh
+<li>Goa
+<li> Haryana
+<li> Himachal Pradesh 
+<li> Jammu and Kashmir
+<li> Jharkhand
+<li> Kerala
+<li> Madhya Pradesh
+<li> Uttar Pradesh
+<li> Sikkim
+<li> Tamilnadu
+<li> Telangana
+<li> West Bengal
+</ul>
+</html>
