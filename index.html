@@ -20,6 +20,10 @@
     <!-- display nicely on phones -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"</meta>
     <!-- bootstrap 3 -->
+<!--
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <!-- fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,300italic' rel='stylesheet' type='text/css'>
@@ -45,7 +49,8 @@
 <body>
 
 <div class=" container">
-        <div class="row">
+<br>
+<br>
 <h1>Covid Resources in India </h1>
 <p> India is currently facing one of the biggest challenges it has faced in its existence -- a pandemic that is ravaging the country. Among the biggest challenges people face is lack of information. Where do I go? Which hospitals have beds? Where can I procure oxygen? Where do I get Remdesivir? And a whole lot more. </p>
 
@@ -60,8 +65,101 @@
 
 <h2> Table of Resources </h2>
 
-<div class="table-responsive">
-                <table class="table table-striped table-bordered">
+<style>
+.table-responsive-stack tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.table-responsive-stack td,
+.table-responsive-stack th {
+   display:block;
+/*
+   flex-grow | flex-shrink | flex-basis   */
+   -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.table-responsive-stack .table-responsive-stack-thead {
+   //font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+   .table-responsive-stack tr {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      border-bottom: 3px solid #ccc;
+      display:block;
+
+   }
+   /*  IE9 FIX   */
+   .table-responsive-stack td {
+      float: left\9;
+      width:100%;
+   }
+}
+</style>
+<script>
+$(document).ready(function() {
+   // inspired by http://jsfiddle.net/arunpjohny/564Lxosz/1/
+   $('.table-responsive-stack').each(function (i) {
+      var id = $(this).attr('id');
+      //alert(id);
+      $(this).find("th").each(function(i) {
+         $('#'+id + ' td:nth-child(' + (i + 1) + ')').prepend('<span class="table-responsive-stack-thead">'+             $(this).text() + ':</span> ');
+         $('.table-responsive-stack-thead').hide();
+
+      });
+   });
+
+$( '.table-responsive-stack' ).each(function() {
+  var thCount = $(this).find("th").length;
+   var rowGrow = 100 / thCount + '%';
+   //console.log(rowGrow);
+   $(this).find("th, td").css('flex-basis', rowGrow);
+});
+
+
+function flexTable(){
+   if ($(window).width() < 768) {
+
+   $(".table-responsive-stack").each(function (i) {
+      $(this).find(".table-responsive-stack-thead").show();
+      $(this).find('thead').hide();
+   });
+
+   // window is less than 768px
+   } else {
+
+   $(".table-responsive-stack").each(function (i) {
+      $(this).find(".table-responsive-stack-thead").hide();
+      $(this).find('thead').show();
+   });
+
+   }
+// flextable
+}
+
+flexTable();
+
+window.onresize = function(event) {
+    flexTable();
+};
+
+// document ready
+});
+
+</script>
+
+<div class="taable-responsive-sm">
+                <table class="table table-striped table-bordered table-responsive-stack" style="font-size: 80%">
 	<thead>
 		<th>Name and Description</th>
 
@@ -69,391 +167,391 @@
         <th>Cities Supported and Resources Offered</th>
 	</thead>
 	<tr>
-		<td width="30%"><a href="https://covidrelief.glideapp.io/">IIT-D Covid Relief Website</a></td>
+		<td ><a href="https://covidrelief.glideapp.io/">IIT-D Covid Relief Website</a></td>
 		<td><b>Vacant Beds</b> (Bangalore, Chennai, Delhi, Faridabad, Gandhinagar, Gurugram, Ludhiana, Nagpur, Panvel, Pune, Rajpur, Thane, Ulhasnagar, Vododara, Visakhapatnam), <b>Oxygen</b> (Bengaluru, Delhi, Hyderabad, Mumbai, Nagpur, Noida, Pune), <b>Medicine</b> (Ahmedabad, Bengaluru, Delhi, Hyderabad, Kolkata, Mumbai, Nagpur, Pune), <b>Resource List</b>, <b>Covid Helplines</b> (All States) </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1z0vB3maKLN1RPDaL5C5YmNlWfmgO_VXuWUEm1LPw-Ns/edit#gid=0">India wide Covid19 resources</a></td>
+		<td ><a href="https://docs.google.com/spreadsheets/d/1z0vB3maKLN1RPDaL5C5YmNlWfmgO_VXuWUEm1LPw-Ns/edit#gid=0">India wide Covid19 resources</a></td>
 		<td>A list of verified contacts, websites and organizations to access hospital beds, covid medication, plasma donors, oxygen cylinders and meal deliveries in various cities.
     </td>
 	</tr>
-  <th>Government Websites/Helplines</th>
+  <th colspan=2>Government Websites/Helplines</th>
   <tr>
-		<td width="30%"><a href="https://www.mygov.in/covid-19/">National - India My Gov COVID-19 page</a></td>
+		<td ><a href="https://www.mygov.in/covid-19/">National - India My Gov COVID-19 page</a></td>
 		<td>India government's official webpage on COVID-19 - Provides aggregrate statistics and official links for helpdesk, statewise links and governments guidelines to tackle COVID-19 </td>
-	</tr>	
+	</tr>
   <tr>
-		<td width="30%"><a href="https://www.mygov.in/corona-data/covid19-statewise-status">Statewise - My Gov COVID-19 page</a></td>
+		<td ><a href="https://www.mygov.in/corona-data/covid19-statewise-status">Statewise - My Gov COVID-19 page</a></td>
 		<td>India government's official webpage on COVID-19 - Provides Statewise links and Whatsapp Chatbots, Facebook Chatbots and URL for COVID-19 </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://ndma.gov.in/Governance/SDMA">Statewise Disaster Management Authority information for COVID-19 page</a></td>
+		<td ><a href="https://ndma.gov.in/Governance/SDMA">Statewise Disaster Management Authority information for COVID-19 page</a></td>
 		<td>India government's statewise disaster management authority links - Official website  </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://selfregistration.cowin.gov.in/">Vaccine Self Registration Government website</a></td>
+		<td ><a href="https://selfregistration.cowin.gov.in/">Vaccine Self Registration Government website</a></td>
 		<td>Self registration link for Vaccine from Indian Government.  </td>
 	</tr>
 	<tr>
-		<td width="30%"><a href="https://airtable.com/shr7wWE0GiX7aQfmo">Government Contacts for COVID-19</a></td>
+		<td ><a href="https://airtable.com/shr7wWE0GiX7aQfmo">Government Contacts for COVID-19</a></td>
 		<td>Contact List of Government and Nodal Officials for COVID-19 support.</td>
 	</tr>
    <tr>
-		<td width="30%"><a href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf">Statewise COVID-19 helpline numbers</a></td>
+		<td ><a href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf">Statewise COVID-19 helpline numbers</a></td>
 		<td>COVID-19 statewise helpline numbers from central government </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/document/u/1/d/16WeMKah7RXoB1gnqa9YXVTuWM4TR6hY9Qys48Pf8mCc/mobilebasic">Verified COVID-19 helpline numbers</a></td>
+		<td ><a href="https://docs.google.com/document/u/1/d/16WeMKah7RXoB1gnqa9YXVTuWM4TR6hY9Qys48Pf8mCc/mobilebasic">Verified COVID-19 helpline numbers</a></td>
 		<td>COVID-19 helpline numbers - most of the information is verified. Statewise and central helpline number </td>
 	</tr>
 	<tr>
-		<td width="30%"><a href="https://airtable.com/shro4xSa3rezV4HDv">List of  COVID Helplines</a></td>
+		<td ><a href="https://airtable.com/shro4xSa3rezV4HDv">List of  COVID Helplines</a></td>
 		<td>List of Statewise and Centrewide COVID-19 Helpline Numbers for quarantine support, essentials etc.</td>
 	</tr>
   <tr>
-		<td width="30%"><a href="">Delhi</a></td>
+		<td ><a href="">Delhi</a></td>
 		<td>Delhi Government's website for all information related to Covid19</td>
 	</tr>
-  <th>Drugs/Medicines</th>
+  <th colspan=2>Drugs/Medicines</th>
   <tr>
-    <td width="30%"><a href="https://docs.google.com/spreadsheets/u/0/d/1J-m84rr-tV47wZrUKn41jlTTID5FNcMs5MwyYHt9fLU/htmlview">Remdesivir</a></td>
+    <td ><a href="https://docs.google.com/spreadsheets/u/0/d/1J-m84rr-tV47wZrUKn41jlTTID5FNcMs5MwyYHt9fLU/htmlview">Remdesivir</a></td>
     <td>Pan India Remdesivir Distributor list</td>
   </tr>
    <tr>
-    <td width="30%"><a href="https://drive.google.com/file/d/1_xyOp8IW1m7LVtDNnU8LmgyQAuTiv8jO/view">Remdesivir list </a></td>
+    <td ><a href="https://drive.google.com/file/d/1_xyOp8IW1m7LVtDNnU8LmgyQAuTiv8jO/view">Remdesivir list </a></td>
     <td> Remdesivir Distributor list - Sheet </td>
-  </tr> 
+  </tr>
   <tr>
-    <td width="30%"><a href="https://www.cipla.com/sites/default/files/Tocilizumab-Distributor-List.pdf">Tocilizumab</a></td>
+    <td ><a href="https://www.cipla.com/sites/default/files/Tocilizumab-Distributor-List.pdf">Tocilizumab</a></td>
     <td>Pan India Tocilizumab Distributor List</td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://drive.google.com/file/d/1DCUHWRUz-Zss2P93bSby2T4uyZWJTr69/view">Tocilizumab Distributor list </a></td>
+    <td ><a href="https://drive.google.com/file/d/1DCUHWRUz-Zss2P93bSby2T4uyZWJTr69/view">Tocilizumab Distributor list </a></td>
     <td> Tocilizumab Distributor List with Mobile Number </td>
   </tr>
   <tr>
-    <td width="30%"><a href=" https://airtable.com/shr2pB9xuC86XlSE4">Contact List of Pharmacies with Covid Medication </a></td>
+    <td ><a href=" https://airtable.com/shr2pB9xuC86XlSE4">Contact List of Pharmacies with Covid Medication </a></td>
     <td> Remdesivir, Tocilluzamb chemists and pharmacies. <b> Pan India </b></td>
   </tr>
 
-  <th> Oxygen Cylinders</th>
+  <th colspan=2> Oxygen Cylinders</th>
   <tr>
-		<td width="30%"> Sports365 Oxygen Cylinders </td>
+		<td > Sports365 Oxygen Cylinders </td>
 		<td><b>Oxygen Cylinders</b> in 24-30 hours (Bangalore, Delhi/NCR, Chennai, Mumbai, Jaipur, Chandigardh, Pune, Nagpur, Ajmer, Lucknow, Jodhpur, Mysore, Vijaywada, Vizag) <br> Contact: ashish@sports365.in , 99869 66909, 63044 95317 </td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://hemkuntfoundation.com/oxygen-cylinder/">Hemkunt Foundation - Oxygen Cylinders</a></td>
-    <td><b>24*7 HELPLINE:+91 8700013641</b>  EMAIL:hemkuntfoundation13@gmail.com Delhi NCR</td>
+    <td ><a href="https://hemkuntfoundation.com/oxygen-cylinder/">Hemkunt Foundation - Oxygen Cylinders</a></td>
+    <td><b>24*7 HELPLINE:+91 8700013641</b>  EMAIL: hemkuntfoundation13@gmail.com Delhi NCR</td>
   </tr>
 
     <tr>
-    <td width="30%"><a href="  https://drive.google.com/file/d/1s9P1hezEkeiv5VVZkMFYt5tmcw8JSQE-/view?usp=sharing">Oxygen Cylinders Suppliers for Medical Use </a></td>
+    <td ><a href="  https://drive.google.com/file/d/1s9P1hezEkeiv5VVZkMFYt5tmcw8JSQE-/view?usp=sharing">Oxygen Cylinders Suppliers for Medical Use </a></td>
     <td>Oxygen Cylinder Suppliers for Medical Home Use -( Revised as on 22 December 2020) Verified information from All India Industrial Gases Manufacturers Association. This link has State wise information about Oxygen suppliers </td>
   </tr>
 
 
 
-  <th>Plasma</th>
+  <th colspan=2>Plasma</th>
 	<tr>
-		<td width="30%"><a href="https://www.dhoondh.com/">Dhoondh</a> Matches Plasma Donors and Patients </td>
+		<td ><a href="https://www.dhoondh.com/">Dhoondh</a> Matches Plasma Donors and Patients </td>
 		<td>Plasma Patient-Donor Matching (Register on this website to recieve/donate plasma)</td>
 	</tr>
   <tr>
-    <td width="30%"><a href="https://docs.google.com/forms/d/e/1FAIpQLSexCGuGCNK-Yo_thypSUhmeoEUXEePNdeUFMRSJOPC0EpgZCw/viewform">Robin Hood Army, Agra. COVID-19 Recovered Patient Directory.</a></td>
+    <td ><a href="https://docs.google.com/forms/d/e/1FAIpQLSexCGuGCNK-Yo_thypSUhmeoEUXEePNdeUFMRSJOPC0EpgZCw/viewform">Robin Hood Army, Agra. COVID-19 Recovered Patient Directory.</a></td>
     <td>RobinHood Army, <b>Agra</b> - Plasma Donation</td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://www.dhoondh.com/">Dhoondh:Find and Donate Plasma</a></td>
+    <td ><a href="https://www.dhoondh.com/">Dhoondh:Find and Donate Plasma</a></td>
     <td>Website to find and donate plasma for COVID-19</td>
   </tr>
    <tr>
-    <td width="30%"><a href="https://plasmadonor.in">https://plasmadonor.in</a></td>
+    <td ><a href="https://plasmadonor.in">https://plasmadonor.in</a></td>
     <td>Website to donate plasma for COVID-19</td>
   </tr>
-  <tr> 
-    <td width="30%"><a href="https://needplasma.in">https://needplasma.in</a></td>
+  <tr>
+    <td ><a href="https://needplasma.in">https://needplasma.in</a></td>
     <td>  Plasma from recovered COVID-19 patients can help save lives </td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://plasmaline.in">https://plasmaline.in</a></td>
+    <td ><a href="https://plasmaline.in">https://plasmaline.in</a></td>
     <td>  PlasmaLine - A community of people willing to donate Plasma and for patients to receive plasma</td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://delhifightscorona.in/">https://delhifightscorona.in</a></td>
+    <td ><a href="https://delhifightscorona.in/">https://delhifightscorona.in</a></td>
     <td>  Website with information to request and donate plasma in Delhi </td>
   </tr>
    <tr>
-    <td width="30%"><a href="https://www.instagram.com/plasmadonors.delhi/">Instagram Link for plasma Donors - Delhi</a></td>
+    <td ><a href="https://www.instagram.com/plasmadonors.delhi/">Instagram Link for plasma Donors - Delhi</a></td>
     <td> Instagram Link for Delhi plasma donors </td>
   </tr>
     <tr>
-    <td width="30%"><a href="https://pintnetwork.com/home">Pint Network - Plasma in Need of Transfusion </a></td>
+    <td ><a href="https://pintnetwork.com/home">Pint Network - Plasma in Need of Transfusion </a></td>
     <td> Building network of plasma across India for recovery of COVID-19 patients </td>
-  </tr> 
+  </tr>
     <tr>
-    <td width="30%"><a href="https://www.friends2support.org/">Friends to Support - Plasma and blood donor website </a></td>
+    <td ><a href="https://www.friends2support.org/">Friends to Support - Plasma and blood donor website </a></td>
     <td> Website for obtaining blood group, plasma availability via state, city and district </td>
   </tr>
    <tr>
-    <td width="30%"><a href="https://givered.in/"> GiveRED for COVID-19 Plasma donation </a></td>
+    <td ><a href="https://givered.in/"> GiveRED for COVID-19 Plasma donation </a></td>
     <td> Website which connect volunteer plasma donors to patients in real time </td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://covidplasma.online/"> COVID-19 plasma therapy resources </a></td>
+    <td ><a href="https://covidplasma.online/"> COVID-19 plasma therapy resources </a></td>
     <td> Website with a comprehensive link to plasma resources and statewise information </td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://www.notion.so/COVID-19-Plasma-therapy-resources-c9e6a39658c44708a9c4a7440f618796"> COVID-19 plasma therapy resource Notion Link </a></td>
+    <td ><a href="https://www.notion.so/COVID-19-Plasma-therapy-resources-c9e6a39658c44708a9c4a7440f618796"> COVID-19 plasma therapy resource Notion Link </a></td>
     <td> Notion link with COVID-19 plasma therapy resourcfes - Consists a lot of information about plasma - national, state and regional level information </td>
   </tr>
-    <th> Hospital Beds</th>
+    <th colspan=2> Hospital Beds</th>
     <tr>
-      <td width="30%"><a href="https://covid19.neera.ai/?tab=delhiAvailableBeds&profile=covid_backup">Misc Hospital Beds</a></td>
+      <td ><a href="https://covid19.neera.ai/?tab=delhiAvailableBeds&profile=covid_backup">Misc Hospital Beds</a></td>
       <td><b>Pan India hospital bed availability (Delhi, Thane, Haryana, Ahmedabad, Navi Mumbai, Bangalore, Pune, Nashik)</b></td>
 	</tr>
-      <td width="30%"><a href="https://airtable.com/shrAnnLrE0Sq21YM0">Hospital Contacts Across India</a></td>
+      <td ><a href="https://airtable.com/shrAnnLrE0Sq21YM0">Hospital Contacts Across India</a></td>
       <td>A List of Contacts of hospital helplines, administrators, war rooms for beds, ICU availibility, ventilators:<b>Pan India</b></td>
     </tr>
   	<tr>
-      <td width="30%"><a href="https://docs.google.com/spreadsheets/d/11CDJrSDy4nIpf8xV0DusLHE32WYGAtdnCZACoIfl_2k/edit#gid=1012090723">Tamil Nadu Hospital Beds</a></td>
+      <td ><a href="https://docs.google.com/spreadsheets/d/11CDJrSDy4nIpf8xV0DusLHE32WYGAtdnCZACoIfl_2k/edit#gid=1012090723">Tamil Nadu Hospital Beds</a></td>
       <td><b>State wise hospital bed availability</td>
     </tr>
     <tr>
-      <td width="30%"><a href="http://164.100.112.24/SpringMVC/Hospital_Beds_Statistic_Bulletin_citizen.html?fbclid=IwAR0VOAobRONd5gLoWQfFvv77rvsygelOm5wBFHX9OSQBxKzR2WvUWNke_yg">Telangana Hospital Beds</a></td>
+      <td ><a href="http://164.100.112.24/SpringMVC/Hospital_Beds_Statistic_Bulletin_citizen.html?fbclid=IwAR0VOAobRONd5gLoWQfFvv77rvsygelOm5wBFHX9OSQBxKzR2WvUWNke_yg">Telangana Hospital Beds</a></td>
       <td><b>State wise hospital bed availability</td>
     </tr>
     <tr>
-      <td width="30%"><a href="https://coronabeds.jantasamvad.org/beds.html">Delhi Hospital Beds</a></td>
+      <td ><a href="https://coronabeds.jantasamvad.org/beds.html">Delhi Hospital Beds</a></td>
       <td><b>State wise hospital bed availability</td>
     </tr>
     <tr>
-      <td width="30%"><a href="https://covidbedpanvel.in/">Panvel, Maharashtra Hospital Beds</a></td>
+      <td ><a href="https://covidbedpanvel.in/">Panvel, Maharashtra Hospital Beds</a></td>
       <td><b>City wise hospital bed availability</td>
     </tr>
     <tr>
       <tr>
-        <td width="30%"><a href="https://covidbedthane.in/HospitalInfo/showindex">Thane, Maharashtra Hospital Beds</a></td>
+        <td ><a href="https://covidbedthane.in/HospitalInfo/showindex">Thane, Maharashtra Hospital Beds</a></td>
         <td><b>City wise hospital bed availability</td>
       </tr>
       <tr>
-      <td width="30%"><a href="https://bbmpgov.com/chbms/">Bangalore, Karnataka Hospital Beds</a></td>
+      <td ><a href="https://bbmpgov.com/chbms/">Bangalore, Karnataka Hospital Beds</a></td>
       <td><b>City wise hospital bed availability</td>
     </tr>
     <tr>
-      <td width="30%"><a href="https://covidrelief.glideapp.io/">Vacant Beds tracker </a></td>
+      <td ><a href="https://covidrelief.glideapp.io/">Vacant Beds tracker </a></td>
       <td><b>COVID-19 Vacant Beds tracker - App from COVRelief</td>
     </tr>
 
-    <th> Doctor Helplines </th>
+    <th colspan=2> Doctor Helplines </th>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1fHiBtzxBC_3Q7I5SXr_GpNA4ivT73w4W4hjK6IkGDBY/edit#gid=2074968679">Verified Doctor COVID-helpline results</a></td>
+		<td ><a href="https://docs.google.com/spreadsheets/d/1fHiBtzxBC_3Q7I5SXr_GpNA4ivT73w4W4hjK6IkGDBY/edit#gid=2074968679">Verified Doctor COVID-helpline results</a></td>
 		<td>Spreadsheet consisting of verified helpline for Doctors - Information spanning states from all  of India </td>
-	</tr>	
-  
+	</tr>
 
 
-  <th> Aggregrator Apps </th>
+
+  <th colspan=2> Aggregrator Apps </th>
  	<tr>
-    <td width="30%"><a href="https://covid19sos.glideapp.io">https://covid19sos.glideapp.io</a></td>
+    <td ><a href="https://covid19sos.glideapp.io">https://covid19sos.glideapp.io</a></td>
 		<td>COVID-19 Emergency Tracker </td>
-  </tr> 
+  </tr>
   	<tr>
-    <td width="30%"><a href="https://covidtools.in/">Tools for COVID-19</a></td>
+    <td ><a href="https://covidtools.in/">Tools for COVID-19</a></td>
 		<td>COVID relief resources like hospital beds, oxygen, Remdesivir,etc aggregrated from medical sources</td>
   </tr>
   	<tr>
-    <td width="30%"><a href="https://www.covidfightclub.org/">COVIDFightClub.org - User generated resource compilation </a></td>
+    <td ><a href="https://www.covidfightclub.org/">COVIDFightClub.org - User generated resource compilation </a></td>
 		<td> COVID Fight Club: Crowdsourced resources to fight COVID across India. Find oxygen, plasma, hospital beds and more </td>
   </tr>
   	<tr>
-    <td width="30%"><a href="https://external.sprinklr.com/insights/explorer/dashboard/601b9e214c7a6b689d76f493/tab/21?id=DASHBOARD_601b9e214c7a6b689d76f493">Sprinklr Dashboard for COVID</a></td>
+    <td ><a href="https://external.sprinklr.com/insights/explorer/dashboard/601b9e214c7a6b689d76f493/tab/21?id=DASHBOARD_601b9e214c7a6b689d76f493">Sprinklr Dashboard for COVID</a></td>
 		<td> Dashboard with statewise information on Remdesivir & Tocilizumab, Hospital beds, Oxygen cylinders, Plasma, Fabiflu & Favipiravir, ICU and ventilators.</td>
   </tr>
   	<tr>
-    <td width="30%"><a href="https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu">Official AarogyaSetu App from Government</a></td>
+    <td ><a href="https://play.google.com/store/apps/details?id=nic.goi.aarogyasetu">Official AarogyaSetu App from Government</a></td>
 		<td>Aarogya Setu is a mobile application developed by the Government of India to connect essential health services with the people of India in our combined fight against COVID-19.</td>
   </tr>
   	<tr>
-    <td width="30%"><a href="https://covid.army/delhi">COVID.army</a></td>
+    <td ><a href="https://covid.army/delhi">COVID.army</a></td>
 		<td>Verified real time COVID-19 App and resources</td>
   </tr>
    <tr>
-    <td width="30%"><a href="https://covidwin.in/">Verified COVID-19 Help resources</a></td>
+    <td ><a href="https://covidwin.in/">Verified COVID-19 Help resources</a></td>
 		<td>Verified resources for COVID-19 help (Oxygen, Hospital beds, Remdesivir/Medicine, Plasma/Blood, Food, Ambulance, Testing, Emergency services)</td>
   </tr>
   <tr>
 
-    <td width="30%"><a href="https://covidwin.in/">Verified COVID-19 Help resources</a></td>
+    <td ><a href="https://covidwin.in/">Verified COVID-19 Help resources</a></td>
 		<td>Verified resources for COVID-19 help (Oxygen, Hospital beds, Remdesivir/Medicine, Plasma/Blood, Food, Ambulance, Testing, Emergency services)</td>
     </tr>
-    <td width="30%"><a href="https://so.city/covid19">Crowdsourced COVID-19 help and resources</a></td>
+    <td ><a href="https://so.city/covid19">Crowdsourced COVID-19 help and resources</a></td>
 		<td>Crowdsourced COVID-19 help and resources. Contains information about Oxygen, Ambulance, Testing, Hospitals/Beds, Blood and Plasma, Medicines, Homecare, X-Ray, Meals, Tele/E-Consultation, Mental Health, Cremation/Mortuary, Sanitization (Verify before using the information on this page)</td>
   </tr>
   <tr>
-      <td width="30%"><a href="https://covidrelief.glideapp.io/">Vacant Beds tracker </a></td>
+      <td ><a href="https://covidrelief.glideapp.io/">Vacant Beds tracker </a></td>
       <td><b>COVID-19 Vacant Beds tracker - App from COVRelief</td>
     </tr>
      </tr>
-    <td width="30%"><a href="https://covidresources.vercel.app/"> COVID-19 Vercel App Resources</a> </td>
+    <td ><a href="https://covidresources.vercel.app/"> COVID-19 Vercel App Resources</a> </td>
 		<td>Crowdsourced COVID-19 help resources - Vercel App - Information from Twitter resources aggregrated in app </td>
-  </tr> 
+  </tr>
 
-  <th>Social Media Resources</th>
+  <th colspan=2>Social Media Resources</th>
   <tr>
-    <td width="30%"><a href="https://help-covid19.netlify.app/">Twitter, Reddit Search Tool for COVID</a></td>
+    <td ><a href="https://help-covid19.netlify.app/">Twitter, Reddit Search Tool for COVID</a></td>
 		<td>Web app for resources around the country, through twitter; beds, oxygen, ICU, food, medicines. <b>(Delhi, Pune, Bombay, Bangalore, Thane, Hyderabad, Nagpur, Lucknow, Ahmedabad, Goa, Chennai, Kolkata)</b></td>
   </tr>
-		<td width="30%"><a href="https://external.sprinklr.com/insights/explorer/dashboard/601b9e214c7a6b689d76f493/tab/1?id=DASHBOARD_601b9e214c7a6b689d76f493">Twitter Dashboard</a></td>
+		<td ><a href="https://external.sprinklr.com/insights/explorer/dashboard/601b9e214c7a6b689d76f493/tab/1?id=DASHBOARD_601b9e214c7a6b689d76f493">Twitter Dashboard</a></td>
 		<td>Real-time updated list of tweets related to covid resources</td>
 	</tr>
   <tr>
-    <td width="30%"><a href="https://twitter.com/adi_singh18/status/1385906824734404608?s=20">List of doctors available for tele-consulatation</a></td>
+    <td ><a href="https://twitter.com/adi_singh18/status/1385906824734404608?s=20">List of doctors available for tele-consulatation</a></td>
 		<td>An updated list of doctors to advise and help mild covid patients (who do not meet admission criteria)</td>
   </tr>
     <tr>
-    <td width="30%"><a href="https://airtable.com/shrkkA4zqnFcl00tq/tblGHtXhpqdPslGEV">Public Groups for COVID-19 Relief</a></td>
+    <td ><a href="https://airtable.com/shrkkA4zqnFcl00tq/tblGHtXhpqdPslGEV">Public Groups for COVID-19 Relief</a></td>
 		<td>WhatsApp and Telegram groups for COVID-19 queries and resource availibilty.</td>
   </tr>
   <tr>
-    <td width="30%"><a href="https://www.reddit.com/r/india/comments/mtfegz/collated_resources_for_covid19_beds_plasma_oxygen/">COVID-19 Resources for beds, plasma oxygen - Reddit </a></td>
+    <td ><a href="https://www.reddit.com/r/india/comments/mtfegz/collated_resources_for_covid19_beds_plasma_oxygen/">COVID-19 Resources for beds, plasma oxygen - Reddit </a></td>
 		<td>Reddit Mega thread consisting of the information for COVID-19 beds, plasma, oxygen, India wise, medicine information, Useful Twitter and Instagram Handles </td>
   </tr>
    <tr>
-    <td width="30%"><a href="https://t.me/IndiaFightsWithCovid">Help Bot - Telegram India Fights with COVID-19 </a></td>
+    <td ><a href="https://t.me/IndiaFightsWithCovid">Help Bot - Telegram India Fights with COVID-19 </a></td>
 		<td> A Help Bot for Telegram India fights with COVID-19 </td>
   </tr>
 
 
 
 
-  <th> COVID-19 Meals Resources </th>
+  <th colspan=2 > COVID-19 Meals Resources </th>
   <tr>
-		<td width="30%"><a href="https://covidmealsforindia.com/">https://covidmealsforindia.com/</a></td>
-		<td> A website for finding meals for India via state and city information. 
+		<td ><a href="https://covidmealsforindia.com/">https://covidmealsforindia.com/</a></td>
+		<td> A website for finding meals for India via state and city information.
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1wu80sP5tq2k9bfxjuzUfRORxPDf07gUALfLMrOv-YEI/htmlview">COVID-19 Meals for India Spreadsheet</a></td>
-		<td> A spreadsheet consisting of statewise information for meals and ordering during COVID-19 with mobile number of service provider.  
+		<td ><a href="https://docs.google.com/spreadsheets/d/1wu80sP5tq2k9bfxjuzUfRORxPDf07gUALfLMrOv-YEI/htmlview">COVID-19 Meals for India Spreadsheet</a></td>
+		<td> A spreadsheet consisting of statewise information for meals and ordering during COVID-19 with mobile number of service provider.
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://drive.google.com/file/d/1pXHdH39bNbgfETOeEaA6wcJZjK7jzlLR/view">COVID-19 Meals for India Spreadsheet</a></td>
-		<td> A spreadsheet consisting of statewise information for meals and ordering during COVID-19 with mobile number of service provider. - Links update possible  
+		<td ><a href="https://drive.google.com/file/d/1pXHdH39bNbgfETOeEaA6wcJZjK7jzlLR/view">COVID-19 Meals for India Spreadsheet</a></td>
+		<td> A spreadsheet consisting of statewise information for meals and ordering during COVID-19 with mobile number of service provider. - Links update possible
     </td>
 	</tr>
    <tr>
-		<td width="30%"><a href="https://drive.google.com/file/d/1pXHdH39bNbgfETOeEaA6wcJZjK7jzlLR/view">COVID-19 Meals for India Spreadsheet</a></td>
-		<td> A spreadsheet consisting of statewise information for meals and ordering during COVID-19 with mobile number of service provider. - Links update possible  
+		<td ><a href="https://drive.google.com/file/d/1pXHdH39bNbgfETOeEaA6wcJZjK7jzlLR/view">COVID-19 Meals for India Spreadsheet</a></td>
+		<td> A spreadsheet consisting of statewise information for meals and ordering during COVID-19 with mobile number of service provider. - Links update possible
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/u/1/d/1wu80sP5tq2k9bfxjuzUfRORxPDf07gUALfLMrOv-YEI/htmlview">COVID-19 Meals PAN India Spreadsheet</a></td>
+		<td ><a href="https://docs.google.com/spreadsheets/u/1/d/1wu80sP5tq2k9bfxjuzUfRORxPDf07gUALfLMrOv-YEI/htmlview">COVID-19 Meals PAN India Spreadsheet</a></td>
 		<td> A spreadsheet for ordering meals for COVID-19 from PAN India
     </td>
 	</tr>
-  <th> Volunteers Required </th>
+  <th colspan=2> Volunteers Required </th>
    <tr>
-		<td width="30%"><a href="https://twitter.com/nameet/status/1385228628275785733?s=21">Volunteer required to verify information - Twitter source</a></td>
+		<td ><a href="https://twitter.com/nameet/status/1385228628275785733?s=21">Volunteer required to verify information - Twitter source</a></td>
 		<td> Volunteer required to verify information from Pan India
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://twitter.com/darthdevi/status/1385802380655022086?s=21">Volunteer required to verify Phone bank</a></td>
+		<td ><a href="https://twitter.com/darthdevi/status/1385802380655022086?s=21">Volunteer required to verify Phone bank</a></td>
 		<td> Volunteer required to verify phone bank for oxygen information
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://twitter.com/Sairee/status/1384026121100881927">Delhi Government Volunteer required</a></td>
+		<td ><a href="https://twitter.com/Sairee/status/1384026121100881927">Delhi Government Volunteer required</a></td>
 		<td> Volunteer required to verify information for Delhi Government
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://twitter.com/_shivangisaxena/status/1386155498416730115">Twitter thread for miscellaneous verification</a></td>
-		<td> Volunteer required to verify information -- miscellaneous information verfication for resource from Pan India 
+		<td ><a href="https://twitter.com/_shivangisaxena/status/1386155498416730115">Twitter thread for miscellaneous verification</a></td>
+		<td> Volunteer required to verify information -- miscellaneous information verfication for resource from Pan India
     </td>
 	</tr>
    <tr>
-		<td width="30%"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdOUekMXXFKevuv8gUyC8IdODHQA2uhidEpKSIg1Be0j88xSQ/viewform">Volunteer required for fighting COVID-19</a></td>
+		<td ><a href="https://docs.google.com/forms/d/e/1FAIpQLSdOUekMXXFKevuv8gUyC8IdODHQA2uhidEpKSIg1Be0j88xSQ/viewform">Volunteer required for fighting COVID-19</a></td>
 		<td>  Volunteer Google Form for Helping to Fight COVID-19  (Verify before submitting information)
     </td>
-	</tr> 
-  <th>Other Comprehensive Websites</th>
+	</tr>
+  <th colspan=2>Other Comprehensive Websites</th>
   <tr>
-		<td width="30%"><a href="https://linktr.ee/fightagainstcovidfff">State Wise COVID-19 Support - By Fridays For Future India</a></td>
+		<td ><a href="https://linktr.ee/fightagainstcovidfff">State Wise COVID-19 Support - By Fridays For Future India</a></td>
 		<td>A list of verified contacts, websites and organizations to access hospital beds, covid medication, plasma donors, oxygen cylinders and meal deliveries in various states.
     </td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1OL7go19rRpSdxemQXHM0cTBds2hjspj7_U7Ag7NdOCQ/htmlview">State Wise COVID-19 fighter Resources </a></td>
-		<td>A list of resources updated in realtime from PAN India for requirement of plasma, oxygen, hospital beds, medicines, food resources, home nurses, testing, ambulances, other resources/helplines, Doctors, mental health resources and whatsApp groups. 
+		<td ><a href="https://docs.google.com/spreadsheets/d/1OL7go19rRpSdxemQXHM0cTBds2hjspj7_U7Ag7NdOCQ/htmlview">State Wise COVID-19 fighter Resources </a></td>
+		<td>A list of resources updated in realtime from PAN India for requirement of plasma, oxygen, hospital beds, medicines, food resources, home nurses, testing, ambulances, other resources/helplines, Doctors, mental health resources and whatsApp groups.
     </td>
 	</tr>
 	<tr>
-		<td width="30%"><a href="https://hydcovidresources.com/"> Hyderabad Covid Resources</a></td>
+		<td ><a href="https://hydcovidresources.com/"> Hyderabad Covid Resources</a></td>
 		<td>Oxygen, Remdesivir, Ambulance, Plasma, Blood Banks, Meal Services, Quarantine Centers, After-Death Services, Other</td>
 	</tr>
 	<tr>
-		<td width="30%"><a href="https://airtable.com/shrZcDhIAqgeYDz7Q"> Oxygen Resources Across India</a></td>
+		<td ><a href="https://airtable.com/shrZcDhIAqgeYDz7Q"> Oxygen Resources Across India</a></td>
 		<td>A list that can help procure oxygen cylinders, refills, concentrators etc. <b>Pan India</b></td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/document/u/2/d/1biE3vm48x9W9N3RRt4-e61dn_vOdMcL-_fFSa6Tw6JU/mobilebasic"> COVID19 Resources</a></td>
+		<td ><a href="https://docs.google.com/document/u/2/d/1biE3vm48x9W9N3RRt4-e61dn_vOdMcL-_fFSa6Tw6JU/mobilebasic"> COVID19 Resources</a></td>
 		<td>List of miscellaneous resources <b>Pan India</b></td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://indiacovidresources.in/">India Covid Resources</a></td>
+		<td ><a href="https://indiacovidresources.in/">India Covid Resources</a></td>
 		<td>Up-to-date availability and contact info of pan-India crowdsourced Covid resources.</td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://drive.google.com/file/d/1wI3dz1bvevT1ncLahizYq1A-QbF70OZu/view">Verified Collated Data Resource </a></td>
+		<td ><a href="https://drive.google.com/file/d/1wI3dz1bvevT1ncLahizYq1A-QbF70OZu/view">Verified Collated Data Resource </a></td>
 		<td>An excel spreadsheet with verified Collated data resources throughout India. This sheet has oxygen availability, medicines, ICU bed information, blood plasma information, Remdesivir, Tocilizumab information and more.</td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://www.instagram.com/stvorg/guide/thane-covid-19-resources/17923273690592316/?igshid=kavgdntsrw73">Thane (COVID 19 Resources)</a></td>
+		<td ><a href="https://www.instagram.com/stvorg/guide/thane-covid-19-resources/17923273690592316/?igshid=kavgdntsrw73">Thane (COVID 19 Resources)</a></td>
 		<td>A comprehensive guide containing a list of resources for all requirements that one might have while testing positive for COVID 19.<b> Thane</b></td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://www.instagram.com/stvorg/guide/bangalore-covid-19-resources/18167434549189471/?igshid=hzfgncjdqxwz">Bangalore(COVID 19 Resources)</a></td>
+		<td ><a href="https://www.instagram.com/stvorg/guide/bangalore-covid-19-resources/18167434549189471/?igshid=hzfgncjdqxwz">Bangalore(COVID 19 Resources)</a></td>
 		<td>A comprehensive guide containing a list of resources for all requirements that one might have while testing positive for COVID 19.<b> Bangalore</b></td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://linktr.ee/COVID19support.India">All India Covid Support</a></td>
+		<td ><a href="https://linktr.ee/COVID19support.India">All India Covid Support</a></td>
 		<td>A comprehensive guide containing a list of Helplines, Plasma Donation Forms and Social Media Updates. <b>Pan India</b></td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1ZmTJVfJvpjaMWs0NUalVXMbSOr6DrdmXvX51RxTDUNY/edit#gid=1946149462">All India Covid Data from Pan India - Spreadsheet</a></td>
+		<td ><a href="https://docs.google.com/spreadsheets/d/1ZmTJVfJvpjaMWs0NUalVXMbSOr6DrdmXvX51RxTDUNY/edit#gid=1946149462">All India Covid Data from Pan India - Spreadsheet</a></td>
 		<td>A comprehensive guide with information about Testing centers, hospital beds, medicine availability, plasma donors, oxygen suppliers, Ambulance services, home care, Food distribution, Other Government resources, Human Supporters, Home Care and more . <b>Pan India</b></td>
 	</tr>
     <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1-HDRXAnMGkFIr8HQB_fUaZiL70c-rSuShYYfO2U6754/edit#gid=1554547770">All India Covid Resource from GVAN - Spreadsheet</a></td>
+		<td ><a href="https://docs.google.com/spreadsheets/d/1-HDRXAnMGkFIr8HQB_fUaZiL70c-rSuShYYfO2U6754/edit#gid=1554547770">All India Covid Resource from GVAN - Spreadsheet</a></td>
 		<td> Statewise information for the COVID-19 on Plasma, Beds, Remdesivir, Tocilizumab, Ambulance/Ventilators, Oxygen, Food/Meals, Home Services - RT PCR Test, Sanitization, Doctors/Hospitals, Helplines.  <b>GVAN</b></td>
 	</tr>
   <tr>
-		<td width="30%"><a href="https://docs.google.com/spreadsheets/d/1uKtW_4Z5DxclK0jPSeJZ6MorfVB597tS3cruLRl7Hf8/edit#gid=2093071791">Miscellaneous Verified Resources - Spreadsheet</a></td>
+		<td ><a href="https://docs.google.com/spreadsheets/d/1uKtW_4Z5DxclK0jPSeJZ6MorfVB597tS3cruLRl7Hf8/edit#gid=2093071791">Miscellaneous Verified Resources - Spreadsheet</a></td>
 		<td> Miscellaneous verified resources for Beds, Oxygen, Medicine, Testing, Plasma, HelpAid and Links to other platforms.</td>
 	</tr>
     <tr>
-		<td width="30%"><a href="https://thereisnoearthb.com/verified">India Verified Leads - There is no earth verified leads</a></td>
+		<td ><a href="https://thereisnoearthb.com/verified">India Verified Leads - There is no earth verified leads</a></td>
 		<td> India Verified Leads from there is no earth website - Contains information on oxygen, beds, plasma, ICU, Remdesivir, Home Care </td>
 	</tr>
- <th>Diagnostic Centres and Clinics</th>
+ <th colspan=2>Diagnostic Centres and Clinics</th>
   <tr>
-		<td width="30%"><a href="https://airtable.com/shrA0I4rCGr0EDBYP">Testing for COVID-19</a></td>
+		<td ><a href="https://airtable.com/shrA0I4rCGr0EDBYP">Testing for COVID-19</a></td>
 		<td>Statewise List of COVID-19 Testing Centres.<b>Pan India</b></td>
 	</tr>
 	<tr>
-		<td width="30%"><a href="https://airtable.com/shrkukmiCaf8Vljtt">Fever Clinics</a></td>
+		<td ><a href="https://airtable.com/shrkukmiCaf8Vljtt">Fever Clinics</a></td>
 		<td>List of Fever and Primary Healthcare Clinics. <b>Pan India</b></td>
 	</tr>
-  <th> Telephonic Guidance Resources </th>
+  <th colspan=2> Telephonic Guidance Resources </th>
    <tr>
-		<td width="30%"><a href="https://bhiksha.github.io/IndiaCovidResources/telephonic_guidance.html"> Telephonic Guidance Comprehensive list  </a>  </td>
+		<td><a href="https://bhiksha.github.io/IndiaCovidResources/telephonic_guidance.html"> Telephonic Guidance Comprehensive list  </a>  </td>
 		<td> Html page with list of doctors who provide telephonic guidance/advice for COVID-19  </td>
 	</tr>
-<th> Delhi </th>
+<th colspan=2> Delhi </th>
    <tr>
-		<td  width="30%"> <a href="https://www.google.com/maps/d/u/0/viewer?mid=1yxvXy78wkNoYdtKHYDCPu0lcFfgqB0yq&shorturl=1&ll=28.656388086331848%2C77.13615215305117&z=12"> Resource availability Map for Delhi on Google maps   </a></td>
+		<td  > <a href="https://www.google.com/maps/d/u/0/viewer?mid=1yxvXy78wkNoYdtKHYDCPu0lcFfgqB0yq&shorturl=1&ll=28.656388086331848%2C77.13615215305117&z=12"> Resource availability Map for Delhi on Google maps   </a></td>
 		<td> Resource Availability Map for Delhi on Google Maps - All kinds of information marked. </td>
 	</tr>
 </table>
@@ -461,6 +559,7 @@
 </div>
 
 <h2>Fundraisers</h2>
+<br>
 <p> Here are lists (of lists) of ongoing fundraisers. Please verify and donate. </p>
 <ul>
 <li> <a href="https://docs.google.com/document/u/0/d/1eiobgyrl8iz-R1Dz7c4R5pzzzkuZLBj99vaC7T_UeVo/mobilebasic"> A variety of fundraisers for everything from food to medical care to PPE</a>
