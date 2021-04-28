@@ -1,11 +1,15 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 1.5em;
     font-weight: 300;
 }
 
+p {
+    font-size: 16px;
+}
+
 b {
-    font-weight: 400;
+    font-weight: 800;
 }
 
 code {
@@ -283,6 +287,8 @@ a, a:hover {
     color: #b05145;
 }
 
+
+
 .container {
     max-width: 1200px;
     padding-left: 25px;
@@ -411,6 +417,7 @@ a, a:hover {
     list-style: none;
     padding-left: 1.2em;
 }
+
 
 table.rules-table td {
 vertical-align: top;
