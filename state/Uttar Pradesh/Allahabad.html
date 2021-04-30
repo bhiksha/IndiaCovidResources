@@ -1,0 +1,95 @@
+<html><head> <meta charset="UTF-8"> <title>Covid19 Resources in India</title> <link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon"> <!-- display nicely on phones --> <meta name="viewport" content="width=device-width, initial-scale=1.0"</meta> <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"> <!-- fonts --> <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,300italic' rel='stylesheet' type='text/css'> <!-- bust caches by incrementing version of main --> <link href="main.4.css" rel="stylesheet" type="text/css"> <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> </head> <body> <style>
+        .table-responsive-stack tr {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+        }
+
+        .table-responsive-stack td,
+        .table-responsive-stack th {
+           display:block;
+        /*
+           flex-grow | flex-shrink | flex-basis   */
+           -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+        }
+
+        .table-responsive-stack .table-responsive-stack-thead {
+           //font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px) {
+           .table-responsive-stack tr {
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+                  -ms-flex-direction: column;
+                      flex-direction: column;
+              border-bottom: 3px solid #ccc;
+              display:block;
+
+           }
+           /*  IE9 FIX   */
+           .table-responsive-stack td {
+              float: left\9;
+              width:100%;
+           }
+        }
+        </style>
+        <script>
+        $(document).ready(function() {
+           // inspired by http://jsfiddle.net/arunpjohny/564Lxosz/1/
+           $('.table-responsive-stack').each(function (i) {
+              var id = $(this).attr('id');
+              //alert(id);
+              $(this).find("th").each(function(i) {
+                 $('#'+id + ' td:nth-child(' + (i + 1) + ')').prepend('<span class="table-responsive-stack-thead">'+             $(this).text() + ':</span> ');
+                 $('.table-responsive-stack-thead').hide();
+
+              });
+           });
+
+        $( '.table-responsive-stack' ).each(function() {
+          var thCount = $(this).find("th").length;
+           var rowGrow = 100 / thCount + '%';
+           //console.log(rowGrow);
+           $(this).find("th, td").css('flex-basis', rowGrow);
+        });
+
+
+        function flexTable(){
+           if ($(window).width() < 768) {
+
+           $(".table-responsive-stack").each(function (i) {
+              $(this).find(".table-responsive-stack-thead").show();
+              $(this).find('thead').hide();
+           });
+
+           // window is less than 768px
+           } else {
+
+           $(".table-responsive-stack").each(function (i) {
+              $(this).find(".table-responsive-stack-thead").hide();
+              $(this).find('thead').show();
+           });
+
+           }
+        // flextable
+        }
+
+        flexTable();
+
+        window.onresize = function(event) {
+            flexTable();
+        };
+
+        // document ready
+        });
+
+        </script>
+
+        <div class="taable-responsive-sm">
+                        <table class="table table-striped table-bordered table-responsive-stack" > <thead><tr><th>Title</th><th>Value</th></thead><tbody><tr><td>State</td><td>Uttar Pradesh</td></tr> <tr><td>City</td><td>Allahabad</td></tr> <tr><td>Oxygen</td><td> No Information Available</td></tr> <tr><td>Source</td><td> No Information Available</td></tr> <tr><td>Testing (home)</td><td> No Information Available</td></tr> <tr><td>Testing (lab)</td><td> No Information Available</td></tr> <tr><td>Hospital beds</td><td> No Information Available</td></tr> <tr><td>Medical advice</td><td> No Information Available</td></tr> <tr><td>Remdesivir</td><td> No Information Available</td></tr> <tr><td>Toclizumbab</td><td> No Information Available</td></tr> <tr><td>Food/Meals</td><td> No Information Available</td></tr> <tr><td>Plasma</td><td> No Information Available</td></tr> <tr><td>Government info</td><td> No Information Available</td></tr> <tr><td>Category</td><td> No Information Available</td></tr> <tr><td>Organization</td><td>Swaroop Rani Nehru Hospital</td></tr><tr><td>Description</td><td>Testing lab for Covid-19</td></tr><tr><td>Phone</td><td>5322256814</td></tr><tr><td>Category </td><td>CoVID-19 Testing Lab</td></tr></tbody></table></div> </div></body></html>
